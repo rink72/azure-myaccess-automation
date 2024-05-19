@@ -8,15 +8,16 @@ resource "azurerm_pim_eligible_role_assignment" "assignment" {
   scope              = var.scope
   justification      = var.justification
 
+  # Not using ticket data but the current azurerm version
+  # will force a recreate each time if you do not set this
+  # as empty.
   ticket {}
 
-  # This is a bit of a hack. If you put '0' as the end date
-  # and there is no maximum duration, the assignment will be
-  # forever. However, if there is maxiumum duration, it will
-  # set the assignment to expire at the maximum but won't change
-  # things the next time it's run. This method will create "permanent"
-  # assignments that expire in 9999 and will force a repeatable
-  # and predictable state.
+  # If a role has no maximum duration, setting "0"
+  # will make it a permamnent assignment. If there is
+  # a maximum duration, it will throw a cryptic error
+  # about the maximum duration needing to be more than 
+  # five minutes.
   schedule {
     expiration {
       end_date_time = coalesce(var.expiration_date, 0)

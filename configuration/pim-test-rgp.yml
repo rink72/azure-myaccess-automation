@@ -1,0 +1,20 @@
+pim_configuration:
+  type: resourcegroup
+  name: pim-test-rgp
+  roles:
+    reader:
+      name: Reader
+      active_assignments:
+
+        PIM_RGP_TEST_Reader_Active:
+          name: PIM_RGP_TEST_Reader_Active
+          type: group
+          justification: Testing PIM automation
+          expiration_date: 2024-10-01
+        
+      eligible_assignments:
+        PIM_RGP_TEST_Reader_Eligible:
+          name: PIM_RGP_TEST_Reader_Eligible
+          type: group
+          name: PIM_RGP_TEST_Reader_Eligible
+          justification: Testing PIM automation

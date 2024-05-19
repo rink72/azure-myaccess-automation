@@ -1,5 +1,5 @@
-variable "scope" {
-  description = "The scope of the PIM role assignment"
+variable "subscription_id" {
+  description = "The GUID of the subscription. Example: 00000000-0000-0000-0000-000000000000"
   type        = string
 }
 
@@ -45,22 +45,22 @@ variable "approver" {
 
 variable "active_assignments" {
   description = "Active assignments"
-  type = list(object({
+  type = map(object({
     type            = string
     name            = string
     justification   = string
     expiration_date = optional(string)
   }))
-  default = []
+  default = {}
 }
 
 variable "eligible_assignments" {
   description = "Eligible assignments"
-  type = list(object({
+  type = map(object({
     type            = string
     name            = string
     justification   = string
     expiration_date = optional(string)
   }))
-  default = []
+  default = {}
 }
