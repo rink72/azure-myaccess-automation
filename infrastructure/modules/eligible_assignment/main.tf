@@ -4,7 +4,7 @@ data "azuread_group" "role_group" {
 
 resource "azurerm_pim_eligible_role_assignment" "assignment" {
   principal_id       = data.azuread_group.role_group.id
-  role_definition_id = "${var.parent_scope}${var.role_definition_id}"
+  role_definition_id = var.role_definition_id
   scope              = var.scope
   justification      = var.justification
 

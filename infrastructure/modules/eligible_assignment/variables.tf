@@ -3,11 +3,6 @@ variable "group_name" {
   type        = string
 }
 
-variable "parent_scope" {
-  description = "The parent scope of the RBAC role. Used to build the role definition ID"
-  type        = string
-}
-
 variable "role_definition_id" {
   description = "The role definition ID"
   type        = string

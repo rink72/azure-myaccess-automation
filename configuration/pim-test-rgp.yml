@@ -1,6 +1,5 @@
 pim_configuration:
-  type: resourcegroup
-  name: pim-test-rgp
+  resource_group_name: pim-test-rgp
   roles:
     reader:
       name: Reader

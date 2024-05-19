@@ -1,5 +1,5 @@
 pim_configuration:
-  subscription_id: b530b5ac-8ca6-4393-b35f-068dcb970647
+  management_group_id: 0e01fa8d-1b77-40a8-9511-0014729ae514
   roles:
     reader:
       name: Reader

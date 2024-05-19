@@ -1,5 +1,5 @@
-variable "scope" {
-  description = "The scope of the PIM role assignment"
+variable "management_group_id" {
+  description = "The GUID of the management group. Example: 00000000-0000-0000-0000-000000000000"
   type        = string
 }
 
