@@ -1,9 +1,13 @@
 terraform {
   required_version = ">= 1.7.5"
   required_providers {
+    
+    # Locking azurerm to a version here as the PIM APIs 
+    # and resources have been buggy and required changes
+    # in the past
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 3.0"
+      version = "= 3.104"
     }
     azuread = {
       source  = "hashicorp/azuread"

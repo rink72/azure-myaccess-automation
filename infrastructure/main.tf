@@ -1,6 +1,6 @@
 locals {
   // Get PIM configuration from YAML
-  pim_configuration = yamldecode(file("${path.module}/../configuration/subscriptions/sam_sandbox.yml"))["pim_configuration"]
+  pim_configuration = yamldecode(file("${path.module}/../configuration/pim.yml"))["pim_configuration"]
 }
 
 data "azurerm_resource_group" "pim_scope" {
@@ -25,9 +25,4 @@ module "pim_roles" {
 
   active_assignments   = try(each.value.active_assignments, null)
   eligible_assignments = try(each.value.eligible_assignments, null)
-}
-
-
-output "outputs" {
-  value = module.pim_roles
 }

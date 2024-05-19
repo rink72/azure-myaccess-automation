@@ -8,6 +8,8 @@ resource "azurerm_pim_eligible_role_assignment" "assignment" {
   scope              = var.scope
   justification      = var.justification
 
+  ticket {}
+
   # This is a bit of a hack. If you put '0' as the end date
   # and there is no maximum duration, the assignment will be
   # forever. However, if there is maxiumum duration, it will
@@ -17,7 +19,7 @@ resource "azurerm_pim_eligible_role_assignment" "assignment" {
   # and predictable state.
   schedule {
     expiration {
-      end_date_time = coalesce(var.expiration_date, "9999-01-01")
+      end_date_time = coalesce(var.expiration_date, 0)
     }
   }
 }
