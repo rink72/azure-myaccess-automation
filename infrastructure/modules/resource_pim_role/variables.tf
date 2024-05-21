@@ -50,6 +50,12 @@ variable "allow_permanent_eligible" {
   default     = false
 }
 
+variable "maximum_active_assignment_duration" {
+  description = "The maximum duration of an active assignment in days"
+  type        = number
+  default     = null
+}
+
 variable "approver" {
   description = "The name of the approver group"
   type        = string

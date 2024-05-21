@@ -2,13 +2,17 @@
 
 set -e
 
+# Get the directory of the current script
+scriptDir=$(dirname "$0")
+
 # Function to parse JSON using grep, sed, and awk
 parse_json() {
     echo "$1" | sed 's/\\\\\//\//g' | sed 's/[{}]/''/g' | awk -v k="\"$2\"" '{n=split($0,a,","); for (i=1; i<=n; i++) if (a[i] ~ k) print a[i];}' | sed 's/\"//g' | awk -F: '{print $2}'
 }
 
 # Assigning the result of the az rest command to the policyData variable
-policyData=$(az rest --method get --url "https://management.azure.com${RESOURCE_ID}/providers/Microsoft.Authorization/roleManagementPolicyAssignments?api-version=2020-10-01&\$filter=roleDefinitionId+eq+%27${ROLE_DEFINITION_ID}%27")
+policyUri="https://management.azure.com${RESOURCE_ID}/providers/Microsoft.Authorization/roleManagementPolicyAssignments?api-version=2020-10-01&\$filter=roleDefinitionId+eq+%27${ROLE_DEFINITION_ID}%27"
+policyData=$(az rest --method get --url $policyUri)
 
 # Check if policyData is not empty
 if [ -z "$policyData" ]; then
@@ -28,10 +32,11 @@ fi
 # Extract the policyId from properties.policyId
 policyId=$(echo "$policyData" | sed -n 's/.*"policyId": "\([^"]*\)".*/\1/p')
 
-# Save the data to files for debugging
-echo "Policy data: $policyData" > /tmp/policyData.txt
-echo "ResultCount: $resultCount" > /tmp/resultCount.txt
-echo "Policy ID: $policyId" > /tmp/policyId.txt
+patchUri="https://management.azure.com${policyId}?api-version=2020-10-01&\$filter=asTarget()"
 
-# Output the policy ID
-echo "{\"policy_id\": \"$policyId\"}"
+if [ $MAXIMUM_ACTIVE_ASSIGNMENT_DURATION ]; then
+    "$scriptDir/set_maximum_active_assignment.sh" -u $patchUri -d $MAXIMUM_ACTIVE_ASSIGNMENT_DURATION
+fi
+
+
+

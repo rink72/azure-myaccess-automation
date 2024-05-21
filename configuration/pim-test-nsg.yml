@@ -3,6 +3,9 @@ pim_configuration:
   roles:
     reader:
       name: Reader
+
+      maximum_active_assignment_duration: 60
+
       active_assignments:
 
         PIM_RGP_TEST_Reader_Active:
