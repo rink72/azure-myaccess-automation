@@ -77,7 +77,7 @@ module "resource_pim" {
   require_activation_ticket        = try(each.value.require_activation_ticket, null)
   require_activation_approval      = try(each.value.require_activation_approval, null)
 
-  maximum_active_assignment_duration = each.value.maximum_active_assignment_duration
+  maximum_active_assignment_duration = try(each.value.maximum_active_assignment_duration, null)
 
   allow_permanent_active   = try(each.value.allow_permanent_active, null)
   allow_permanent_eligible = try(each.value.allow_permanent_eligible, null)

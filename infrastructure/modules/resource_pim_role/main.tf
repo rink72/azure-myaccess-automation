@@ -39,4 +39,5 @@ module "pim_role_configuration" {
   role_definition_id = data.azurerm_role_definition.rbac_role.role_definition_id
 
   maximum_active_assignment_duration = var.maximum_active_assignment_duration
+  allow_permanent_active             = var.allow_permanent_active
 }

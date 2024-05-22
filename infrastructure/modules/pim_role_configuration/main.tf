@@ -1,7 +1,8 @@
 resource "terraform_data" "pim_role_configuration" {
 
   triggers_replace = [
-    var.maximum_active_assignment_duration
+    var.maximum_active_assignment_duration,
+    var.allow_permanent_active
   ]
 
   provisioner "local-exec" {
@@ -11,6 +12,7 @@ resource "terraform_data" "pim_role_configuration" {
       RESOURCE_ID                        = var.resource_id
       ROLE_DEFINITION_ID                 = var.role_definition_id
       MAXIMUM_ACTIVE_ASSIGNMENT_DURATION = var.maximum_active_assignment_duration
+      ALLOW_PERMANENT_ACTIVE             = var.allow_permanent_active
     }
   }
 }

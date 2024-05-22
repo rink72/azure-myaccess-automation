@@ -4,7 +4,8 @@ pim_configuration:
     reader:
       name: Reader
 
-      maximum_active_assignment_duration: 60
+      # maximum_active_assignment_duration: 180
+      allow_permanent_active: true
 
       active_assignments:
 

@@ -13,3 +13,9 @@ variable "maximum_active_assignment_duration" {
   type        = number
   default     = null
 }
+
+variable "allow_permanent_active" {
+  description = "Allow permanent active assignments"
+  type        = bool
+  default     = null
+}

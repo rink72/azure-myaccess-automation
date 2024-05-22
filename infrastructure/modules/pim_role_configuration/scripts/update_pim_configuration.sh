@@ -34,6 +34,10 @@ policyId=$(echo "$policyData" | sed -n 's/.*"policyId": "\([^"]*\)".*/\1/p')
 
 patchUri="https://management.azure.com${policyId}?api-version=2020-10-01&\$filter=asTarget()"
 
+if [ $ALLOW_PERMANENT_ACTIVE ]; then
+    "$scriptDir/set_allow_permanent_active.sh" -u $patchUri -a $ALLOW_PERMANENT_ACTIVE
+fi
+
 if [ $MAXIMUM_ACTIVE_ASSIGNMENT_DURATION ]; then
     "$scriptDir/set_maximum_active_assignment.sh" -u $patchUri -d $MAXIMUM_ACTIVE_ASSIGNMENT_DURATION
 fi
