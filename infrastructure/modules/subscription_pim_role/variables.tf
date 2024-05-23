@@ -14,12 +14,6 @@ variable "require_activation_justification" {
   default     = true
 }
 
-variable "require_activation_ticket" {
-  description = "Require activation ticket"
-  type        = bool
-  default     = true
-}
-
 variable "require_activation_approval" {
   description = "Require activation approval"
   type        = bool

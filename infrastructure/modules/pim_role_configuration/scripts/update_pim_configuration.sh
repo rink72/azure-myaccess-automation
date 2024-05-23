@@ -5,12 +5,12 @@ set -e
 # Get the directory of the current script
 scriptDir=$(dirname "$0")
 
-# Function to parse JSON using grep, sed, and awk
+# Function to parse JSON
 parse_json() {
     echo "$1" | sed 's/\\\\\//\//g' | sed 's/[{}]/''/g' | awk -v k="\"$2\"" '{n=split($0,a,","); for (i=1; i<=n; i++) if (a[i] ~ k) print a[i];}' | sed 's/\"//g' | awk -F: '{print $2}'
 }
 
-# Assigning the result of the az rest command to the policyData variable
+# Retrieve the policy data
 policyUri="https://management.azure.com${RESOURCE_ID}/providers/Microsoft.Authorization/roleManagementPolicyAssignments?api-version=2020-10-01&\$filter=roleDefinitionId+eq+%27${ROLE_DEFINITION_ID}%27"
 policyData=$(az rest --method get --url $policyUri)
 
@@ -50,5 +50,12 @@ if [ $MAXIMUM_ELIGIBLE_ASSIGNMENT_DURATION ]; then
     "$scriptDir/set_maximum_eligible_assignment.sh" -u $patchUri -d $MAXIMUM_ELIGIBLE_ASSIGNMENT_DURATION
 fi
 
+if [ $MAXIMUM_ACTIVATION_DURATION ]; then
+    "$scriptDir/set_maximum_activation.sh" -u $patchUri -d $MAXIMUM_ACTIVATION_DURATION
+fi
+
+if [ $REQUIRE_ACTIVATION_JUSTIFICATION ]; then
+    "$scriptDir/set_require_justification.sh" -u $patchUri -r $REQUIRE_ACTIVATION_JUSTIFICATION
+fi
 
 

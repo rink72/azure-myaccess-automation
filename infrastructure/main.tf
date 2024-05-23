@@ -14,8 +14,11 @@ module "rgp_pim" {
   resource_group_name = local.resource_group_pim.resource_group_name
 
   require_activation_justification = try(each.value.require_activation_justification, null)
-  require_activation_ticket        = try(each.value.require_activation_ticket, null)
   require_activation_approval      = try(each.value.require_activation_approval, null)
+
+  maximum_active_assignment_duration   = try(each.value.maximum_active_assignment_duration, null)
+  maximum_eligible_assignment_duration = try(each.value.maximum_eligible_assignment_duration, null)
+  maximum_activation_duration          = try(each.value.maximum_activation_duration, null)
 
   allow_permanent_active   = try(each.value.allow_permanent_active, null)
   allow_permanent_eligible = try(each.value.allow_permanent_eligible, null)
@@ -34,7 +37,6 @@ module "subscription_pim" {
   subscription_id = local.subscription_pim.subscription_id
 
   require_activation_justification = try(each.value.require_activation_justification, null)
-  require_activation_ticket        = try(each.value.require_activation_ticket, null)
   require_activation_approval      = try(each.value.require_activation_approval, null)
 
   allow_permanent_active   = try(each.value.allow_permanent_active, null)
@@ -54,7 +56,6 @@ module "managementgroup_pim" {
   management_group_id = local.management_group_pim.management_group_id
 
   require_activation_justification = try(each.value.require_activation_justification, null)
-  require_activation_ticket        = try(each.value.require_activation_ticket, null)
   require_activation_approval      = try(each.value.require_activation_approval, null)
 
   allow_permanent_active   = try(each.value.allow_permanent_active, null)
@@ -74,11 +75,11 @@ module "resource_pim" {
   resource_name = local.resource_pim.resource_name
 
   require_activation_justification = try(each.value.require_activation_justification, null)
-  require_activation_ticket        = try(each.value.require_activation_ticket, null)
   require_activation_approval      = try(each.value.require_activation_approval, null)
 
   maximum_active_assignment_duration   = try(each.value.maximum_active_assignment_duration, null)
   maximum_eligible_assignment_duration = try(each.value.maximum_eligible_assignment_duration, null)
+  maximum_activation_duration          = try(each.value.maximum_activation_duration, null)
 
   allow_permanent_active   = try(each.value.allow_permanent_active, null)
   allow_permanent_eligible = try(each.value.allow_permanent_eligible, null)

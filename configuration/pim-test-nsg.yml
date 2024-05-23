@@ -8,6 +8,8 @@ pim_configuration:
       maximum_active_assignment_duration: 15
       allow_permanent_active: true
       allow_permanent_eligible: false
+      maximum_activation_duration: 3
+      require_activation_justification: true
 
       active_assignments:
 

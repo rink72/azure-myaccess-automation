@@ -31,3 +31,15 @@ variable "allow_permanent_eligible" {
   type        = bool
   default     = null
 }
+
+variable "maximum_activation_duration" {
+  description = "The maximum duration of an activation in hours"
+  type        = number
+  default     = null
+}
+
+variable "require_activation_justification" {
+  description = "Require activation justification"
+  type        = bool
+  default     = null
+}

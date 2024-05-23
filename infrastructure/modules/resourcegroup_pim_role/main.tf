@@ -30,8 +30,18 @@ module "eligible_assignments" {
   expiration_date    = each.value.expiration_date
 }
 
-data "azapi_resource_id" "roleManagementPolicy" {
-  type      = "Microsoft.Authorization/roleManagementPolicies@2020-10-01"
-  name      = "bd4d764e-b40d-4ed1-802b-533400abb6c4"
-  parent_id = data.azurerm_resource_group.rgp_scope.id
+module "pim_role_configuration" {
+  source = "../pim_role_configuration"
+
+  resource_id        = data.azurerm_resource_group.rgp_scope.id
+  role_definition_id = data.azurerm_role_definition.rbac_role.role_definition_id
+
+  maximum_active_assignment_duration   = var.maximum_active_assignment_duration
+  maximum_eligible_assignment_duration = var.maximum_eligible_assignment_duration
+  maximum_activation_duration          = var.maximum_activation_duration
+
+  require_activation_justification = var.require_activation_justification
+
+  allow_permanent_active   = var.allow_permanent_active
+  allow_permanent_eligible = var.allow_permanent_eligible
 }

@@ -23,13 +23,7 @@ variable "role_name" {
 variable "require_activation_justification" {
   description = "Require activation justification"
   type        = bool
-  default     = true
-}
-
-variable "require_activation_ticket" {
-  description = "Require activation ticket"
-  type        = bool
-  default     = true
+  default     = null
 }
 
 variable "require_activation_approval" {
@@ -58,6 +52,12 @@ variable "maximum_active_assignment_duration" {
 
 variable "maximum_eligible_assignment_duration" {
   description = "The maximum duration of an eligible assignment in days"
+  type        = number
+  default     = null
+}
+
+variable "maximum_activation_duration" {
+  description = "The maximum duration of an activation in hours"
   type        = number
   default     = null
 }

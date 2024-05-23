@@ -38,7 +38,12 @@ module "pim_role_configuration" {
   resource_id        = data.azurerm_resources.resource_scope.resources[0].id
   role_definition_id = data.azurerm_role_definition.rbac_role.role_definition_id
 
-  maximum_active_assignment_duration = var.maximum_active_assignment_duration
-  allow_permanent_active             = var.allow_permanent_active
-  allow_permanent_eligible           = var.allow_permanent_eligible
+  maximum_active_assignment_duration   = var.maximum_active_assignment_duration
+  maximum_eligible_assignment_duration = var.maximum_eligible_assignment_duration
+  maximum_activation_duration          = var.maximum_activation_duration
+
+  require_activation_justification = var.require_activation_justification
+
+  allow_permanent_active   = var.allow_permanent_active
+  allow_permanent_eligible = var.allow_permanent_eligible
 }

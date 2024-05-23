@@ -4,7 +4,9 @@ resource "terraform_data" "pim_role_configuration" {
     var.maximum_active_assignment_duration,
     var.allow_permanent_active,
     var.allow_permanent_eligible,
-    var.maximum_eligible_assignment_duration
+    var.maximum_eligible_assignment_duration,
+    var.maximum_activation_duration,
+    var.require_activation_justification
   ]
 
   provisioner "local-exec" {
@@ -17,6 +19,8 @@ resource "terraform_data" "pim_role_configuration" {
       MAXIMUM_ACTIVE_ELIGIBLE_DURATION   = var.maximum_eligible_assignment_duration
       ALLOW_PERMANENT_ACTIVE             = var.allow_permanent_active
       ALLOW_PERMANENT_ELIGIBLE           = var.allow_permanent_eligible
+      MAXIMUM_ACTIVATION_DURATION        = var.maximum_activation_duration
+      REQUIRE_ACTIVATION_JUSTIFICATION   = var.require_activation_justification
     }
   }
 }
