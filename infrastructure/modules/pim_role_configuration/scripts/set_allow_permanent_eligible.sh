@@ -67,14 +67,14 @@ payload=$(cat <<EOF
       {
         "isExpirationRequired": $is_expiration_required,
         $max_expiry
-        "id": "Expiration_Admin_Assignment",
+        "id": "Expiration_Admin_Eligibility",
         "ruleType": "RoleManagementPolicyExpirationRule",
         "target": {
           "caller": "Admin",
           "operations": [
             "All"
           ],
-          "level": "Assignment",
+          "level": "Eligibility",
           "targetObjects": [],
           "inheritableSettings": [],
           "enforcedSettings": []

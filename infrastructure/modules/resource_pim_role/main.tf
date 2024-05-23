@@ -40,4 +40,5 @@ module "pim_role_configuration" {
 
   maximum_active_assignment_duration = var.maximum_active_assignment_duration
   allow_permanent_active             = var.allow_permanent_active
+  allow_permanent_eligible           = var.allow_permanent_eligible
 }

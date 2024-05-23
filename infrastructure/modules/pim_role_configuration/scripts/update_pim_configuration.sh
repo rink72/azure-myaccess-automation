@@ -42,5 +42,13 @@ if [ $MAXIMUM_ACTIVE_ASSIGNMENT_DURATION ]; then
     "$scriptDir/set_maximum_active_assignment.sh" -u $patchUri -d $MAXIMUM_ACTIVE_ASSIGNMENT_DURATION
 fi
 
+if [ $ALLOW_PERMANENT_ELIGIBLE ]; then
+    "$scriptDir/set_allow_permanent_eligible.sh" -u $patchUri -a $ALLOW_PERMANENT_ELIGIBLE
+fi
+
+if [ $MAXIMUM_ELIGIBLE_ASSIGNMENT_DURATION ]; then
+    "$scriptDir/set_maximum_eligible_assignment.sh" -u $patchUri -d $MAXIMUM_ELIGIBLE_ASSIGNMENT_DURATION
+fi
+
 
 

@@ -56,6 +56,12 @@ variable "maximum_active_assignment_duration" {
   default     = null
 }
 
+variable "maximum_eligible_assignment_duration" {
+  description = "The maximum duration of an eligible assignment in days"
+  type        = number
+  default     = null
+}
+
 variable "approver" {
   description = "The name of the approver group"
   type        = string
