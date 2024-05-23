@@ -1,5 +1,5 @@
 pim_configuration:
-  resource_name: pim-test-nsg
+  resource_name: pim-test-3-nsg
   roles:
     reader:
       name: Reader
@@ -12,16 +12,14 @@ pim_configuration:
       require_activation_justification: true
 
       active_assignments:
-
         PIM_RGP_TEST_Reader_Active:
           name: PIM_RGP_TEST_Reader_Active
           type: group
           justification: Testing PIM automation
           expiration_date: 2024-10-01
-        
+
       eligible_assignments:
         PIM_RGP_TEST_Reader_Eligible:
           name: PIM_RGP_TEST_Reader_Eligible
           type: group
-          name: PIM_RGP_TEST_Reader_Eligible
           justification: Testing PIM automation

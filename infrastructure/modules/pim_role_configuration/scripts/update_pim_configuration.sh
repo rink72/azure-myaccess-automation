@@ -32,7 +32,8 @@ fi
 # Extract the policyId from properties.policyId
 policyId=$(echo "$policyData" | sed -n 's/.*"policyId": "\([^"]*\)".*/\1/p')
 
-patchUri="https://management.azure.com${policyId}?api-version=2020-10-01&\$filter=asTarget()"
+# patchUri="https://management.azure.com${policyId}?api-version=2020-10-01&\$filter=asTarget()"
+patchUri="https://management.azure.com${policyId}?api-version=2020-10-01"
 
 if [ $ALLOW_PERMANENT_ACTIVE ]; then
     "$scriptDir/set_allow_permanent_active.sh" -u $patchUri -a $ALLOW_PERMANENT_ACTIVE

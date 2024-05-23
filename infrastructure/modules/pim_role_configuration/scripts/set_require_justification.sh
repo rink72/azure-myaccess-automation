@@ -61,7 +61,7 @@ payload=$(cat <<EOF
       {
         "enabledRules": $enabled_rules,
         "id": "Enablement_EndUser_Assignment",
-        "ruleType": "RoleManagementPolicyExpirationRule",
+        "ruleType": "RoleManagementPolicyEnablementRule",
         "target": {
           "caller": "EndUser",
           "operations": [
@@ -78,8 +78,6 @@ payload=$(cat <<EOF
 }
 EOF
 )
-
-echo "Payload: $payload"
 
 # Make PATCH request using az rest
 response=$(az rest --method patch --uri "$uri" --headers "Content-Type=application/json" --body "$payload" --output json --query "statusCode")
