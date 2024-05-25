@@ -1,7 +1,7 @@
 locals {
   // Get PIM configuration from YAML
-  resource_pim         = yamldecode(file("${path.module}/../configuration/pim-test-nsg.yml"))["pim_configuration"]
-  resource_group_pim   = yamldecode(file("${path.module}/../configuration/pim-test-rgp.yml"))["pim_configuration"]
+  resource_pim         = yamldecode(file("${path.module}/../configuration/pim-dev-nsg.yml"))["pim_configuration"]
+  resource_group_pim   = yamldecode(file("${path.module}/../configuration/pim-dev-rgp.yml"))["pim_configuration"]
   subscription_pim     = yamldecode(file("${path.module}/../configuration/subscription-one.yml"))["pim_configuration"]
   management_group_pim = yamldecode(file("${path.module}/../configuration/management-group.yml"))["pim_configuration"]
 }

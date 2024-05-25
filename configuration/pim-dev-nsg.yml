@@ -1,10 +1,10 @@
 pim_configuration:
-  resource_name: pim-test-3-nsg
+  resource_name: pim-dev-nsg
   roles:
     reader:
       name: Reader
 
-      # maximum_active_assignment_duration: 180
+      maximum_active_assignment_duration: 30
       maximum_active_assignment_duration: 15
       allow_permanent_active: true
       allow_permanent_eligible: false
