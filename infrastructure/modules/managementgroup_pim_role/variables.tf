@@ -14,12 +14,6 @@ variable "require_activation_justification" {
   default     = true
 }
 
-variable "require_activation_ticket" {
-  description = "Require activation ticket"
-  type        = bool
-  default     = true
-}
-
 variable "require_activation_approval" {
   description = "Require activation approval"
   type        = bool
@@ -38,9 +32,28 @@ variable "allow_permanent_eligible" {
   default     = false
 }
 
-variable "approver" {
+variable "maximum_active_assignment_duration" {
+  description = "The maximum duration of an active assignment in days"
+  type        = number
+  default     = null
+}
+
+variable "maximum_eligible_assignment_duration" {
+  description = "The maximum duration of an eligible assignment in days"
+  type        = number
+  default     = null
+}
+
+variable "maximum_activation_duration" {
+  description = "The maximum duration of an activation in hours"
+  type        = number
+  default     = null
+}
+
+variable "approver_group_name" {
   description = "The name of the approver group"
   type        = string
+  default     = null
 }
 
 variable "active_assignments" {

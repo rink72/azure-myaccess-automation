@@ -32,19 +32,18 @@ fi
 # Extract the policyId from properties.policyId
 policyId=$(echo "$policyData" | sed -n 's/.*"policyId": "\([^"]*\)".*/\1/p')
 
-# patchUri="https://management.azure.com${policyId}?api-version=2020-10-01&\$filter=asTarget()"
 patchUri="https://management.azure.com${policyId}?api-version=2020-10-01"
 
 if [ $ALLOW_PERMANENT_ACTIVE ]; then
     "$scriptDir/set_allow_permanent_active.sh" -u $patchUri -a $ALLOW_PERMANENT_ACTIVE
 fi
 
-if [ $MAXIMUM_ACTIVE_ASSIGNMENT_DURATION ]; then
-    "$scriptDir/set_maximum_active_assignment.sh" -u $patchUri -d $MAXIMUM_ACTIVE_ASSIGNMENT_DURATION
-fi
-
 if [ $ALLOW_PERMANENT_ELIGIBLE ]; then
     "$scriptDir/set_allow_permanent_eligible.sh" -u $patchUri -a $ALLOW_PERMANENT_ELIGIBLE
+fi
+
+if [ $MAXIMUM_ACTIVE_ASSIGNMENT_DURATION ]; then
+    "$scriptDir/set_maximum_active_assignment.sh" -u $patchUri -d $MAXIMUM_ACTIVE_ASSIGNMENT_DURATION
 fi
 
 if [ $MAXIMUM_ELIGIBLE_ASSIGNMENT_DURATION ]; then
@@ -57,6 +56,12 @@ fi
 
 if [ $REQUIRE_ACTIVATION_JUSTIFICATION ]; then
     "$scriptDir/set_require_justification.sh" -u $patchUri -r $REQUIRE_ACTIVATION_JUSTIFICATION
+fi
+
+# Run this if only if the variable is set. This allows us to pass ""
+# and remove the approver group but make no changes if we pass null
+if [ -n "${APPROVER_GROUP_NAME+set}" ]; then
+    "$scriptDir/set_approver.sh" -u $patchUri -g $APPROVER_GROUP_NAME
 fi
 
 

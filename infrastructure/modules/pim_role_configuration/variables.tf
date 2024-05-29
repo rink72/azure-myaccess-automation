@@ -43,3 +43,9 @@ variable "require_activation_justification" {
   type        = bool
   default     = null
 }
+
+variable "approver_group_name" {
+  description = "The name of the approver group"
+  type        = string
+  default     = null
+}

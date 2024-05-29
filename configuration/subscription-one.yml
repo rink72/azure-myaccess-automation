@@ -4,17 +4,13 @@ pim_configuration:
     reader:
       name: Reader
 
-      requireActivationJustification: true
-      requireActivationTicket: true
-      # requireActivationApproval: true
-      requireAssignmentJustification: true
-      approvalGroup: PIM_RGP_TEST_Reader_Approvers
-      allowPermanentEligible: true
-      allowPermanentActive: true
-
-      maximumEligibleAssignmentDuration: 30
-      maximumActiveAssignmentDuration: 30
-      maximumActivationDurationDuration: 8
+      maximum_active_assignment_duration: 180
+      maximum_eligible_assignment_duration: 180
+      allow_permanent_active: true
+      allow_permanent_eligible: true
+      maximum_activation_duration: 3
+      require_activation_justification: true
+      approver_group_name: PIM_RGP_TEST_Reader_Approvers
 
       active_assignments:
         PIM_RGP_TEST_Reader_Active:

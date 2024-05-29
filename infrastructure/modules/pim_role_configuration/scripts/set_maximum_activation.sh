@@ -82,6 +82,12 @@ EOF
 )
 
 # Make PATCH request using az rest
-response=$(az rest --method patch --uri "$uri" --headers "Content-Type=application/json" --body "$payload" --output json --query "statusCode")
+response=$(az rest --method patch --uri "$uri" --headers "Content-Type=application/json" --body "$payload" --output json 2>&1)
+
+# Check if the request was successful
+if [ $? -ne 0 ]; then
+  echo "Error: $response"
+  exit 1
+fi
 
 exit 0

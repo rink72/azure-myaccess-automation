@@ -86,6 +86,11 @@ payload=$(cat <<EOF
 EOF
 )
 
-response=$(az rest --method patch --uri "$uri" --headers "Content-Type=application/json" --body "$payload" --only-show-errors --query "statusCode")
+response=$(az rest --method patch --uri "$uri" --headers "Content-Type=application/json" --body "$payload" --only-show-errors 2>&1)
+
+if [ $? -ne 0 ]; then
+  echo "Error: $response"
+  exit 1
+fi
 
 exit 0

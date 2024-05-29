@@ -62,9 +62,10 @@ variable "maximum_activation_duration" {
   default     = null
 }
 
-variable "approver" {
+variable "approver_group_name" {
   description = "The name of the approver group"
   type        = string
+  default     = null
 }
 
 variable "active_assignments" {

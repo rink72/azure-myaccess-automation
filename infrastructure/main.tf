@@ -23,7 +23,7 @@ module "rgp_pim" {
   allow_permanent_active   = try(each.value.allow_permanent_active, null)
   allow_permanent_eligible = try(each.value.allow_permanent_eligible, null)
 
-  approver = try(each.value.approver, null)
+  approver_group_name = try(each.value.approver_group_name, null)
 
   active_assignments   = try(each.value.active_assignments, null)
   eligible_assignments = try(each.value.eligible_assignments, null)
@@ -39,10 +39,14 @@ module "subscription_pim" {
   require_activation_justification = try(each.value.require_activation_justification, null)
   require_activation_approval      = try(each.value.require_activation_approval, null)
 
+  maximum_active_assignment_duration   = try(each.value.maximum_active_assignment_duration, null)
+  maximum_eligible_assignment_duration = try(each.value.maximum_eligible_assignment_duration, null)
+  maximum_activation_duration          = try(each.value.maximum_activation_duration, null)
+
   allow_permanent_active   = try(each.value.allow_permanent_active, null)
   allow_permanent_eligible = try(each.value.allow_permanent_eligible, null)
 
-  approver = try(each.value.approver, null)
+  approver_group_name = try(each.value.approver_group_name, null)
 
   active_assignments   = try(each.value.active_assignments, null)
   eligible_assignments = try(each.value.eligible_assignments, null)
@@ -58,10 +62,14 @@ module "managementgroup_pim" {
   require_activation_justification = try(each.value.require_activation_justification, null)
   require_activation_approval      = try(each.value.require_activation_approval, null)
 
+  maximum_active_assignment_duration   = try(each.value.maximum_active_assignment_duration, null)
+  maximum_eligible_assignment_duration = try(each.value.maximum_eligible_assignment_duration, null)
+  maximum_activation_duration          = try(each.value.maximum_activation_duration, null)
+
   allow_permanent_active   = try(each.value.allow_permanent_active, null)
   allow_permanent_eligible = try(each.value.allow_permanent_eligible, null)
 
-  approver = try(each.value.approver, null)
+  approver_group_name = try(each.value.approver_group_name, null)
 
   active_assignments   = try(each.value.active_assignments, null)
   eligible_assignments = try(each.value.eligible_assignments, null)
@@ -84,7 +92,7 @@ module "resource_pim" {
   allow_permanent_active   = try(each.value.allow_permanent_active, null)
   allow_permanent_eligible = try(each.value.allow_permanent_eligible, null)
 
-  approver = try(each.value.approver, null)
+  approver_group_name = try(each.value.approver_group_name, null)
 
   active_assignments   = try(each.value.active_assignments, null)
   eligible_assignments = try(each.value.eligible_assignments, null)
