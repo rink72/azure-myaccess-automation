@@ -4,11 +4,11 @@ pim_configuration:
     reader:
       name: Reader
 
-      maximum_active_assignment_duration: 180
+      # maximum_active_assignment_duration: 90
       # maximum_eligible_assignment_duration: 180
-      allow_permanent_active: true
+      allow_permanent_active: false
       allow_permanent_eligible: true
-      maximum_activation_duration: 3
+      maximum_activation_duration: 8
       require_activation_justification: true
       approver_group_name: PIM_RGP_TEST_Reader_Approvers
 
@@ -17,7 +17,6 @@ pim_configuration:
           name: PIM_RGP_TEST_Reader_Active
           type: group
           justification: Testing PIM automation
-          expiration_date: 2024-10-01
 
       eligible_assignments:
         PIM_RGP_TEST_Reader_Eligible:
